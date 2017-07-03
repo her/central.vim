@@ -6,7 +6,7 @@ three new directors, swap, backup, and undo inside ~/.vim
 
 ## Installation 
 
-###[vim-plug](https://github.com/junegunn/vim-plug)
+### [vim-plug](https://github.com/junegunn/vim-plug)
 Add this to your `.vimrc`
 ```
 	Plug `her/central.vim`
