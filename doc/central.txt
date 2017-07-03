@@ -20,3 +20,5 @@ location in .vimrc
 <
 The trailing double slash `//` enables functionality that ensures each file added 
 to the directories will be unique, thereby preventing overwrites.
+
+  vim:tw=78:ts=8:ft=help:norl:
