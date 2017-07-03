@@ -2,7 +2,7 @@
 
 This plugin creates directories to store swap, backup, and undo files in a
 centralized place. First it checks if the directories exist, if not it creates
-three new directors, swap, backup, and undo inside ~/.vim 
+three new directors, swap, backup, and undo inside `~/.vim` 
 
 ## Installation 
 
