@@ -1,6 +1,6 @@
 # Central.vim 🌷 
 
-**Centralize Backup, Swap, Undo
+**Centralize Backup, Swap, Undo**
 
 Create directories to store unique backup, swap, and undo files in a
 centralized place.
