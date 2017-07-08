@@ -1,9 +1,11 @@
 # Central.vim 🌷 
 
-Create directories to store unique swap, backup, and undo files in a
+**Centralize Backup, Swap, Undo
+
+Create directories to store unique backup, swap, and undo files in a
 centralized place.
 
-Swap, backup, and undo are created in `~/.vim` 
+Backup, swap, and undo are created in `~/.vim` 
 
 ```sh
 .vim
@@ -14,9 +16,9 @@ Swap, backup, and undo are created in `~/.vim`
 
 Vim is then set to use these locations.
 ```vim
-set undodir=~/.vim/undo//
-set directory=~/.vim/swap//
 set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 ```
 
 ## Installation 
