@@ -6,17 +6,18 @@ Licence: BSD
 INTRODUCTION                      *central*
 
 This plugin creates directories to store swap, backup, and undo files in a
-centralized place. First it checks if the directories exist, if not it creates
-three new directors, swap, backup, and undo inside ~/.vim 
+centralized place. If they don't already exist, Central creates three new
+directores inside `~/.vim` Swap, Backup, and Undo. 
 
-CONFIGURATION                     *central-configuration*
-
-In order for Vim to take advantage of these new directories we need to set their
-location in .vimrc
+Next, in order for Vim to take advantage of these new directories Central configures 
+their location.
 >
 	set undodir=~/.vim/undo//
 	set directory=~/.vim/swap//
 	set backupdir=~/.vim/backup//
 <
+
+Notes                     *notes*
+
 The trailing double slash `//` enables functionality that ensures each file added 
 to the directories will be unique, thereby preventing overwrites.
