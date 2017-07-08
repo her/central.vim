@@ -7,7 +7,7 @@ INTRODUCTION                      *central*
 
 This plugin creates directories to store backup, swap and undo files in a
 centralized place. If they don't already exist, Central.vim creates three new
-directores inside `~/.vim` Backup, Swap, and Undo. 
+directories inside `~/.vim` Backup, Swap, and Undo. 
 
 >
 .vim
