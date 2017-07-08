@@ -1,11 +1,11 @@
 " central.vim - Centralize Swap, Backup, Undo
 " Author: Melanie Berkley <http://berkley.io>
-" Version: 0.1.0
+" Version: 0.2.0
 " License: BSD
 
-set undodir=~/.vim/undo//
-set directory=~/.vim/swap//
 set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 
 if !isdirectory($HOME . "/.vim/backup")
     call mkdir($HOME . "/.vim/backup", "p")
