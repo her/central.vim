@@ -3,6 +3,10 @@
 " Version: 0.1.0
 " License: BSD
 
+set undodir=~/.vim/undo//
+set directory=~/.vim/swap//
+set backupdir=~/.vim/backup//
+
 if !isdirectory($HOME . "/.vim/backup")
     call mkdir($HOME . "/.vim/backup", "p")
 endif
