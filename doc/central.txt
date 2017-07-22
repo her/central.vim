@@ -27,3 +27,5 @@ Notes                             *notes*
 
 The trailing double slash `//` enables functionality that ensures each 
 file added to the directories will be unique, thereby preventing overwrites.
+
+vim:tw=78:et:ft=help:norl:
