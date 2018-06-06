@@ -5,10 +5,11 @@
 Create directories to store unique backup, swap, and undo files in a
 centralized place.
 
-Backup, swap, and undo are created in `~/.vim` 
+Backup, swap, and undo are created in `$VIMHOME` (which defaults to
+`~/.vim` on Unix based systems).
 
 ```sh
-.vim
+$VIMHOME
 ├── backup
 ├── swap
 └── undo
@@ -16,9 +17,9 @@ Backup, swap, and undo are created in `~/.vim`
 
 Vim is then set to use these locations.
 ```vim
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+set backupdir=$VIMHOME/backup//
+set directory=$VIMHOME/swap//
+set undodir=$VIMHOME/undo//
 ```
 
 ## Installation 
