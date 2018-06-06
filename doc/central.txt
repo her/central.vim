@@ -21,6 +21,7 @@ configures their location.
 	set backupdir=$VIMHOME/backup//
 	set directory=$VIMHOME/swap//
 	set undodir=$VIMHOME/undo//
+	set backup swapfile undofile
 <
 
 Notes                             *notes*

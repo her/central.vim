@@ -20,6 +20,7 @@ Vim is then set to use these locations.
 set backupdir=$VIMHOME/backup//
 set directory=$VIMHOME/swap//
 set undodir=$VIMHOME/undo//
+set backup swapfile undofile
 ```
 
 ## Installation 

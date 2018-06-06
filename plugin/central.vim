@@ -12,3 +12,5 @@ for dir in [ &backupdir, &directory, &undodir ]
         call mkdir(dir, 'p')
     endif
 endfor
+
+set backup swapfile undofile
