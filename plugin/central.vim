@@ -30,3 +30,16 @@ if g:central_cleanup_enable > 0
     endfor
 endif
 
+if !exists('g:central_multiple_backup_enable')
+    let g:central_multiple_backup_enable = 1
+endif
+
+if g:central_multiple_backup_enable == 1
+    augroup CentralMultipleBackup
+        autocmd!
+        autocmd BufWritePre *
+        \   let path = substitute(expand('%:p:h'),'/','%','g')
+        \ | let time = strftime("%Y-%m-%d~%H:%M:%S")
+        \ | let &backupext = '~'.path.'~'.time
+    augroup END
+endif

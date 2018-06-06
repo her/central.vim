@@ -31,6 +31,16 @@ auto deletion.
 let g:central_cleanup_enable = 30
 ```
 
+Vim will also maintain multiple backups each time a file is written
+to. These backup files are saved in `$$VIMHOME/backup` and follow the
+naming convention `<buffer name>~<original path>~<time stamp>`, thus
+ensuing a unique backup each time the buffer is saved. This can be
+disabled by setting `g:central_multiple_backup_enable` to zero, where
+Vim will only maintain a single backup each time a file is written to.
+```vim
+let g:central_multiple_backup_enable = 0
+```
+
 ## Installation 
 
 ### [vim-plug](https://github.com/junegunn/vim-plug)
