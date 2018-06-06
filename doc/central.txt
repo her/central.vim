@@ -23,6 +23,12 @@ configures their location.
 	set undodir=$VIMHOME/undo//
 	set backup swapfile undofile
 <
+This plugin also manages these directories by deleting any files older than
+`g:central_cleanup_enable` days (which defaults to 30 days). This can be set
+to any duration in days, or set to zero to disable auto deletion.
+>
+	let g:central_cleanup_enable = 30 "days
+<
 
 Notes                             *notes*
 

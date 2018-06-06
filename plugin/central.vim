@@ -14,3 +14,19 @@ for dir in [ &backupdir, &directory, &undodir ]
 endfor
 
 set backup swapfile undofile
+
+if !exists('g:central_cleanup_enable')
+    let g:central_cleanup_enable = 30 "days
+endif
+
+if g:central_cleanup_enable > 0
+    let epoch = localtime() - (g:central_cleanup_enable * 86400)
+    for dir in [ &backupdir, &directory, &undodir ]
+        for file in split(glob(substitute(dir, '//', '/*', '')))
+            if getftime(file) < epoch
+                call delete(file)
+            endif
+        endfor
+    endfor
+endif
+

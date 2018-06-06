@@ -2,8 +2,8 @@
 
 **Centralize Backup, Swap, Undo**
 
-Create directories to store unique backup, swap, and undo files in a
-centralized place.
+Create and manage directories to store unique backup, swap, and undo
+files in a centralized place.
 
 Backup, swap, and undo are created in `$VIMHOME` (which defaults to
 `~/.vim` on Unix based systems).
@@ -21,6 +21,14 @@ set backupdir=$VIMHOME/backup//
 set directory=$VIMHOME/swap//
 set undodir=$VIMHOME/undo//
 set backup swapfile undofile
+```
+
+Vim will also manage these directories by deleting any files older
+than `g:central_cleanup_enable` days (which defaults to 30 days).
+This can be set to any duration in days, or set to zero to disable
+auto deletion.
+```vim
+let g:central_cleanup_enable = 30
 ```
 
 ## Installation 
