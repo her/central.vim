@@ -8,9 +8,9 @@ set backupdir=$VIMHOME/backup//
 set directory=$VIMHOME/swap//
 set undodir=$VIMHOME/undo//
 
-for dir in [ &backupdir, &directory, &undodir ]
-    if !isdirectory(dir)
-        call mkdir(dir, 'p')
+for s:dir in [ &backupdir, &directory, &undodir ]
+    if !isdirectory(s:dir)
+        call mkdir(s:dir, 'p')
     endif
 endfor
 
@@ -21,11 +21,11 @@ if !exists('g:central_cleanup_enable')
 endif
 
 if g:central_cleanup_enable > 0
-    let epoch = localtime() - (g:central_cleanup_enable * 86400)
-    for dir in [ &backupdir, &directory, &undodir ]
-        for file in split(glob(substitute(dir, '//', '/*', '')))
-            if getftime(file) < epoch
-                call delete(file)
+    let s:epoch = localtime() - (g:central_cleanup_enable * 86400)
+    for s:dir in [ &backupdir, &directory, &undodir ]
+        for s:file in split(glob(substitute(s:dir, '//', '/*', '')))
+            if getftime(s:file) < s:epoch
+                call delete(s:file)
             endif
         endfor
     endfor
@@ -39,8 +39,8 @@ if g:central_multiple_backup_enable == 1
     augroup CentralMultipleBackup
         autocmd!
         autocmd BufWritePre *
-        \   let path = substitute(expand('%:p:h'),'/','%','g')
-        \ | let time = strftime("%Y-%m-%d~%H:%M:%S")
-        \ | let &backupext = '~'.path.'~'.time
+        \   let s:path = substitute(expand('%:p:h'),'/','%','g')
+        \ | let s:time = strftime("%Y-%m-%d~%H:%M:%S")
+        \ | let &backupext = '~'.s:path.'~'.s:time
     augroup END
 endif
