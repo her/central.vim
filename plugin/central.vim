@@ -1,5 +1,6 @@
 " central.vim - Centralize Swap, Backup, Undo
 " Author: Melanie Berkley <http://berkley.io>
+" Collaborator: Matthew Bright <https://github.com/matt1003/>
 " Version: 0.2.0
 " License: BSD
 
