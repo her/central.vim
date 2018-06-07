@@ -25,7 +25,9 @@ if g:central_cleanup_enable > 0
     for s:dir in [ &backupdir, &directory, &undodir ]
         for s:file in split(glob(substitute(s:dir, '//', '/*', '')))
             if getftime(s:file) < s:epoch
-                call delete(s:file)
+                if filewritable(s:file)
+                    call delete(s:file)
+                endif
             endif
         endfor
     endfor
