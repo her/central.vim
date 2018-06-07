@@ -1,18 +1,46 @@
 " central.vim - Centralize Swap, Backup, Undo
 " Author: Melanie Berkley <http://berkley.io>
+" Collaborator: Matthew Bright <https://github.com/matt1003/>
 " Version: 0.2.0
 " License: BSD
 
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+set backupdir=$VIMHOME/backup//
+set directory=$VIMHOME/swap//
+set undodir=$VIMHOME/undo//
 
-if !isdirectory($HOME . "/.vim/backup")
-    call mkdir($HOME . "/.vim/backup", "p")
+for dir in [ &backupdir, &directory, &undodir ]
+    if !isdirectory(dir)
+        call mkdir(dir, 'p')
+    endif
+endfor
+
+set backup swapfile undofile
+
+if !exists('g:central_cleanup_enable')
+    let g:central_cleanup_enable = 30 "days
 endif
-if !isdirectory($HOME . "/.vim/swap")
-    call mkdir($HOME . "/.vim/swap", "p")
+
+if g:central_cleanup_enable > 0
+    let epoch = localtime() - (g:central_cleanup_enable * 86400)
+    for dir in [ &backupdir, &directory, &undodir ]
+        for file in split(glob(substitute(dir, '//', '/*', '')))
+            if getftime(file) < epoch
+                call delete(file)
+            endif
+        endfor
+    endfor
 endif
-if !isdirectory($HOME . "/.vim/undo")
-    call mkdir($HOME . "/.vim/undo", "p")
+
+if !exists('g:central_multiple_backup_enable')
+    let g:central_multiple_backup_enable = 1
+endif
+
+if g:central_multiple_backup_enable == 1
+    augroup CentralMultipleBackup
+        autocmd!
+        autocmd BufWritePre *
+        \   let path = substitute(expand('%:p:h'),'/','%','g')
+        \ | let time = strftime("%Y-%m-%d~%H:%M:%S")
+        \ | let &backupext = '~'.path.'~'.time
+    augroup END
 endif
