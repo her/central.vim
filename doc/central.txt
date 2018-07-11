@@ -8,14 +8,16 @@ INTRODUCTION                      *central*
 
 This plugin creates directories to store backup, swap and undo files in a
 centralized place. If these directories do not already exist, Central.vim
-will create them inside your local `$VIMHOME` directory. 
-
+will create them in the local `$VIMHOME` directory (where `$VIMHOME` defaults
+to `$HOME/.vim` on Unix systems and `$HOME\vimfiles` on Windows systems). The
+vaule of `$VIMHOME` can be manually configured by defining it in your local
+vimrc file.
 >
-$VIMHOME
-├── backup
-├── swap
-└── undo
-
+        $VIMHOME
+         ├── backup
+         ├── swap
+         └── undo
+<
 In order for Vim to take advantage of these new directories Central.vim 
 configures their location.
 >
@@ -30,7 +32,6 @@ to any duration in days, or set to zero to disable auto deletion.
 >
 	let g:central_cleanup_enable = 30 "days
 <
-
 This plugin also maintain multiple backups each time a file is written
 to. These backup files are saved in `$$VIMHOME/backup` and follow the
 naming convention `<buffer name>~<original path>~<time stamp>`, thus

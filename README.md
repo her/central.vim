@@ -5,8 +5,10 @@
 Create and manage directories to store unique backup, swap, and undo
 files in a centralized place.
 
-Backup, swap, and undo are created in `$VIMHOME` (which defaults to
-`~/.vim` on Unix based systems).
+Backup, swap, and undo are created in `$VIMHOME`, which defaults to
+`$HOME/.vim` on Unix based systems and `$HOME\vimfiles` on Windows
+based systems. This location can be manually overridden by defining
+`$VIMHOME` with your local vimrc file.
 
 ```sh
 $VIMHOME
@@ -32,7 +34,7 @@ let g:central_cleanup_enable = 30
 ```
 
 Vim will also maintain multiple backups each time a file is written
-to. These backup files are saved in `$$VIMHOME/backup` and follow the
+to. These backup files are saved in `$VIMHOME/backup` and follow the
 naming convention `<buffer name>~<original path>~<time stamp>`, thus
 ensuing a unique backup each time the buffer is saved. This can be
 disabled by setting `g:central_multiple_backup_enable` to zero, where
@@ -41,7 +43,7 @@ Vim will only maintain a single backup each time a file is written to.
 let g:central_multiple_backup_enable = 0
 ```
 
-## Installation 
+## Installation
 
 ### [vim-plug](https://github.com/junegunn/vim-plug)
 Add this to your `.vimrc`
