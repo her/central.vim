@@ -4,6 +4,14 @@
 " Version: 0.2.0
 " License: BSD
 
+if !exists('$VIMHOME')
+    if has('win32') || has ('win64')
+        let $VIMHOME=$HOME.'/vimfiles'
+    else
+        let $VIMHOME=$HOME.'/.vim'
+    endif
+endif
+
 set backupdir=$VIMHOME/backup//
 set directory=$VIMHOME/swap//
 set undodir=$VIMHOME/undo//
