@@ -44,7 +44,7 @@ function! CheckDirectories(timer)
 endfunction
 
 if has('timers')
-    call timer_start(20, 'CheckDirectories')
+    call timer_start(0, 'CheckDirectories')
 else
     call CheckDirectories(1)
 endif
