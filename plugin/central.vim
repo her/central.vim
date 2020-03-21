@@ -43,7 +43,11 @@ function! CheckDirectories(timer)
     endif
 endfunction
 
-call timer_start(20, 'CheckDirectories')
+if has('timers')
+    call timer_start(20, 'CheckDirectories')
+else
+    call CheckDirectories(1)
+endif
 
 if !exists('g:central_multiple_backup_enable')
     let g:central_multiple_backup_enable = 1
