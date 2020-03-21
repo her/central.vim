@@ -16,30 +16,34 @@ set backupdir=$VIMHOME/backup//
 set directory=$VIMHOME/swap//
 set undodir=$VIMHOME/undo//
 
-for s:dir in [ &backupdir, &directory, &undodir ]
-    if !isdirectory(s:dir)
-        call mkdir(s:dir, 'p')
-    endif
-endfor
-
 set backup swapfile undofile
 
 if !exists('g:central_cleanup_enable')
     let g:central_cleanup_enable = 30 "days
 endif
 
-if g:central_cleanup_enable > 0
-    let s:epoch = localtime() - (g:central_cleanup_enable * 86400)
+function! CheckDirectories(timer)
     for s:dir in [ &backupdir, &directory, &undodir ]
-        for s:file in split(glob(substitute(s:dir, '//', '/*', '')))
-            if getftime(s:file) < s:epoch
-                if filewritable(s:file)
-                    call delete(s:file)
-                endif
-            endif
-        endfor
+        if !isdirectory(s:dir)
+            call mkdir(s:dir, 'p')
+        endif
     endfor
-endif
+
+    if g:central_cleanup_enable > 0
+        let s:epoch = localtime() - (g:central_cleanup_enable * 86400)
+        for s:dir in [ &backupdir, &directory, &undodir ]
+            for s:file in split(glob(substitute(s:dir, '//', '/*', '')))
+                if getftime(s:file) < s:epoch
+                    if filewritable(s:file)
+                        call delete(s:file)
+                    endif
+                endif
+            endfor
+        endfor
+    endif
+endfunction
+
+call timer_start(20, 'CheckDirectories')
 
 if !exists('g:central_multiple_backup_enable')
     let g:central_multiple_backup_enable = 1
