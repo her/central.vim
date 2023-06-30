@@ -5,7 +5,9 @@
 " License: BSD
 
 if !exists('$VIMHOME')
-    if has('win32') || has ('win64')
+    if has('nvim')
+        let $VIMHOME=stdpath('data')
+    elseif has('win32') || has ('win64')
         let $VIMHOME=$HOME.'/vimfiles'
     else
         let $VIMHOME=$HOME.'/.vim'
