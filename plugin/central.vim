@@ -58,9 +58,6 @@ endif
 if g:central_multiple_backup_enable == 1
     augroup CentralMultipleBackup
         autocmd!
-        autocmd BufWritePre *
-        \   let s:path = substitute(expand('%:p:h'),'/','%','g')
-        \ | let s:time = strftime("%Y-%m-%d~%H:%M:%S")
-        \ | let &backupext = '~'.s:path.'~'.s:time
+        autocmd BufWritePre * let &backupext = '~'.strftime("%Y-%m-%d~%H:%M:%S")
     augroup END
 endif
